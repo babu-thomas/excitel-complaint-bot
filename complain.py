@@ -34,7 +34,14 @@ def lodge_complaint(driver):
 if __name__ == '__main__':
     username = ''
     password = ''
-    driver = webdriver.Chrome()
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    driver = webdriver.Chrome(chrome_options=options)
+    print('Logging in...')
     login(driver, username, password)
+    print("Logged in!")
+    print("Lodging complaint...")
     lodge_complaint(driver)
+    print("Complaint lodged!")
     driver.close()
