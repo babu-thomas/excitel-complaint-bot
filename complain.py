@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 def login(driver, username, password):
@@ -18,4 +21,15 @@ if __name__ == '__main__':
     password = ''
     driver = webdriver.Chrome()
     login(driver, username, password)
-    # driver.close()
+
+    WebDriverWait(driver, 10).until(
+        EC.invisibility_of_element_located((By.CLASS_NAME, 'loader-container'))
+    )
+    complaint_button_path = '//div[@class="dashboard-actions"]//button[@class="btn red connectivity-button"]'
+    complaint_button_element = driver.find_element_by_xpath(complaint_button_path)
+    complaint_button_element.click()
+
+    confirm_button_element = driver.find_element_by_xpath('//modal-footer-actions/button[@class="btn green"]')
+    confirm_button_element.click()
+
+    driver.close()
