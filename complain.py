@@ -18,6 +18,9 @@ def login(driver, username, password):
 
 def lodge_complaint(driver):
     WebDriverWait(driver, 30).until(
+        EC.visibility_of_element_located((By.CLASS_NAME, 'dashboard-title'))
+    )
+    WebDriverWait(driver, 30).until(
         EC.invisibility_of_element_located((By.CLASS_NAME, 'loader-container'))
     )
     complaint_button_path = '//div[@class="dashboard-actions"]//button[@class="btn red connectivity-button"]'
