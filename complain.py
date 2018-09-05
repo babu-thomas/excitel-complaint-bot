@@ -16,13 +16,8 @@ def login(driver, username, password):
     login_button_element.click()
 
 
-if __name__ == '__main__':
-    username = ''
-    password = ''
-    driver = webdriver.Chrome()
-    login(driver, username, password)
-
-    WebDriverWait(driver, 10).until(
+def lodge_complaint(driver):
+    WebDriverWait(driver, 30).until(
         EC.invisibility_of_element_located((By.CLASS_NAME, 'loader-container'))
     )
     complaint_button_path = '//div[@class="dashboard-actions"]//button[@class="btn red connectivity-button"]'
@@ -32,4 +27,11 @@ if __name__ == '__main__':
     confirm_button_element = driver.find_element_by_xpath('//modal-footer-actions/button[@class="btn green"]')
     confirm_button_element.click()
 
+
+if __name__ == '__main__':
+    username = ''
+    password = ''
+    driver = webdriver.Chrome()
+    login(driver, username, password)
+    lodge_complaint(driver)
     driver.close()
