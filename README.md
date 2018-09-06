@@ -33,3 +33,4 @@ Sadly, my internet connection is down so much that I had to make this to lodge c
 ## Resources
 - [XPath Cheatsheet](https://devhints.io/xpath)
 - [Selenium documentation](https://selenium-python.readthedocs.io/index.html)
+- Chrome extension to show XPath of any element on a webpage - [XPath Helper](https://chrome.google.com/webstore/detail/xpath-helper/hgimnogjllphhhkhlmebbmlgjoejdpjl)
