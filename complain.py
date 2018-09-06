@@ -1,3 +1,14 @@
+# usage: python complain.py [-h] [--headless] username password
+#
+# positional arguments:
+#   username    Excitel username
+#   password    Excitel password
+#
+# optional arguments:
+#   -h, --help  show this help message and exit
+#   --headless  Use Chrome in headless mode
+#
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -32,11 +43,20 @@ def lodge_complaint(driver):
 
 
 if __name__ == '__main__':
-    username = ''
-    password = ''
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('username', help='Excitel username')
+    parser.add_argument('password', help='Excitel password')
+    parser.add_argument('--headless', help='Use Chrome in headless mode', action='store_true')
+    args = parser.parse_args()
+
+    username = args.username
+    password = args.password
 
     options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    if args.headless:
+        options.add_argument('headless')
     driver = webdriver.Chrome(chrome_options=options)
     print('Logging in...')
     login(driver, username, password)
