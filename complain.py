@@ -17,7 +17,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 def login(driver, username, password):
     driver.get('https://my.excitel.com/login')
-    username_element = driver.find_element_by_xpath('//form//input[@formcontrolname="username"]')
+    username_element_path = '//form//input[@formcontrolname="username"]'
+    WebDriverWait(driver, 30).until(
+        EC.visibility_of_element_located((By.XPATH, username_element_path))
+    )
+    username_element = driver.find_element_by_xpath(username_element_path)
     username_element.clear()
     username_element.send_keys(username)
     password_element = driver.find_element_by_xpath('//form//input[@formcontrolname="password"]')
