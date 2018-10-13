@@ -9,7 +9,7 @@ A Python script I wrote to automate the lodging of complaints at [Excitel's webs
 ```
 pip install selenium
 ```
-2. [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) (included in this repository)
+2. [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 3. Google Chrome browser
 
 Note: Other browsers will work too. But will need some modifications in the code. More details [here](https://selenium-python.readthedocs.io/installation.html#drivers).
