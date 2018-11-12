@@ -24,7 +24,8 @@ def login(driver, username, password):
     username_element = driver.find_element_by_xpath(username_element_path)
     username_element.clear()
     username_element.send_keys(username)
-    password_element = driver.find_element_by_xpath('//form//input[@formcontrolname="password"]')
+    password_element = driver.find_element_by_xpath(
+        '//form//input[@formcontrolname="password"]')
     password_element.clear()
     password_element.send_keys(password)
     login_button_element = driver.find_element_by_xpath('//form//button')
@@ -39,10 +40,12 @@ def lodge_complaint(driver):
         EC.invisibility_of_element_located((By.CLASS_NAME, 'loader-container'))
     )
     complaint_button_path = '//div[@class="dashboard-actions"]//button[@class="btn red connectivity-button"]'
-    complaint_button_element = driver.find_element_by_xpath(complaint_button_path)
+    complaint_button_element = driver.find_element_by_xpath(
+        complaint_button_path)
     complaint_button_element.click()
 
-    confirm_button_element = driver.find_element_by_xpath('//modal-footer-actions/button[@class="btn green"]')
+    confirm_button_element = driver.find_element_by_xpath(
+        '//modal-footer-actions/button[@class="btn green"]')
     confirm_button_element.click()
 
 
@@ -52,7 +55,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('username', nargs='?', help='Excitel username')
     parser.add_argument('password', nargs='?', help='Excitel password')
-    parser.add_argument('--headless', help='Use Chrome in headless mode', action='store_true')
+    parser.add_argument(
+        '--headless', help='Use Chrome in headless mode', action='store_true')
     args = parser.parse_args()
 
     username = args.username
