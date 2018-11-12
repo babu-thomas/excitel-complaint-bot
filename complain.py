@@ -1,9 +1,15 @@
-# usage: python complain.py [-h] [--headless] username password
-#
+# usage: python complain.py [-h] [--headless] [username] [password]
+# 
+# A script to automate the logding of complaints at "https://my.excitel.com".
+# Takes username and password as command line arguments. If they are not present
+# looks for a file named "creds" in the current directory. The first line in
+# that file is taken as the username and the second line is taken as the
+# password.
+# 
 # positional arguments:
 #   username    Excitel username
 #   password    Excitel password
-#
+# 
 # optional arguments:
 #   -h, --help  show this help message and exit
 #   --headless  Use Chrome in headless mode
