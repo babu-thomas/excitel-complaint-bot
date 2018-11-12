@@ -50,13 +50,24 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('username', help='Excitel username')
-    parser.add_argument('password', help='Excitel password')
+    parser.add_argument('username', nargs='?', help='Excitel username')
+    parser.add_argument('password', nargs='?', help='Excitel password')
     parser.add_argument('--headless', help='Use Chrome in headless mode', action='store_true')
     args = parser.parse_args()
 
     username = args.username
     password = args.password
+
+    if(username is None or password is None):
+        print('No credentials passed through command line. Looking for them in creds file.')
+        try:
+            with open("creds") as f:
+                username = f.readline()[:-1]
+                password = f.readline()
+        except OSError as err:
+            print('Credentials file not found!')
+            print(err)
+            exit()
 
     options = webdriver.ChromeOptions()
     if args.headless:
