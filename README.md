@@ -15,8 +15,16 @@ pip install selenium
 Note: Other browsers will work too. But will need some modifications in the code. More details [here](https://selenium-python.readthedocs.io/installation.html#drivers).
 
 ### How to use
+`$ python complain.py --help`
+
 ```
-python complain.py [-h] [--headless] username password
+usage: python complain.py [-h] [--headless] [username] [password]
+
+A script to automate the logding of complaints at "https://my.excitel.com".
+Takes username and password as command line arguments. If they are not present
+looks for a file named "creds" in the current directory. The first line in
+that file is taken as the username and the second line is taken as the
+password.
 
 positional arguments:
   username    Excitel username
