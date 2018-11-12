@@ -52,7 +52,12 @@ def lodge_complaint(driver):
 if __name__ == '__main__':
     import argparse
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=('A script to automate the logding of complaints at "https://my.excitel.com". '
+                                                  'Takes username and password as command line arguments. If they are not present looks for '
+                                                  'a file named "creds" in the current directory. The first line in that file is taken as '
+                                                  'the username and the second line is taken as the password.')
+                                     )
+
     parser.add_argument('username', nargs='?', help='Excitel username')
     parser.add_argument('password', nargs='?', help='Excitel password')
     parser.add_argument(
